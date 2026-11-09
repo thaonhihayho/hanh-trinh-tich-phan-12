@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hành Trình Tích Phân 12 - Kết Nối Tri Thức Với Cuộc Sống</title>
+
+    <!-- 1. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2. Thư viện KaTeX hiển thị công thức Toán học chuẩn LaTeX -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- 3. Quy chuẩn Font chữ Times New Roman 12pt & Căn đều 2 bên (Chống căn giữa) -->
+    <style>
+      html,
+      body,
+      #root {
+        text-align: left !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+      }
+      .math-content {
+        font-family: 'Times New Roman', Times, serif !important;
+        font-size: 12pt !important;
+        line-height: 1.65 !important;
+        color: #1e293b;
+        text-align: justify !important;
+      }
+      .math-content-inline {
+        font-family: 'Times New Roman', Times, serif !important;
+        font-size: 12pt !important;
+        text-align: left !important;
+        display: inline !important;
+      }
+      .math-content .katex,
+      .math-content-inline .katex {
+        font-size: 1.06em !important;
+      }
+      .math-content .katex-display {
+        margin: 0.65em 0 !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        text-align: center !important;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-100 text-slate-900 antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
