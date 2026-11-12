@@ -87,51 +87,50 @@ function createMcqItem(
 }
 
 // ============================================================================
-// NGÂN HÀNG ĐẦY ĐỦ CÁC DẠNG BÀI TẬP TỪ SGK (4.1 -> 4.35) & SBT (4.1 -> 4.48)
+// NGÂN HÀNG ĐẦY ĐỦ CÁC DẠNG BÀI TẬP TỪ SGK & SBT (ĐÃ BỎ NHÃN TRÍCH DẪN ĐẦU CÂU)
 // ============================================================================
 function buildDiverseQuestionBank(seedVer: number): {
   mcqPool: BankItem[];
   shortPool: BankItem[];
 } {
-  // Các tham số ngẫu nhiên nhẹ để ngay cả khi gặp lại cùng dạng bài vẫn có số mới
   const k = (seedVer % 3) + 2; // 2, 3, 4
   const m = (seedVer % 4) + 2; // 2, 3, 4, 5
   const R = (seedVer % 3) + 2; // 2, 3, 4
 
   const mcqPool: BankItem[] = [
-    // --- NHÓM 1: MỨC ĐỘ NHẬN BIẾT (BÁM SÁT BÀI 11, 12, 13 SGK & SBT) ---
+    // --- NHÓM 1: MỨC ĐỘ NHẬN BIẾT ---
     createMcqItem(
       'nb-def-prim',
       'Nhận biết',
-      String.raw`*(Theo Bài 4.1 SGK)* Cho hàm số $F(x)$ là một nguyên hàm của hàm số $f(x)$ trên khoảng $K$. Khẳng định nào sau đây là **đúng**?`,
+      String.raw`Cho hàm số $F(x)$ là một nguyên hàm của hàm số $f(x)$ trên khoảng $K$. Khẳng định nào sau đây là **đúng**?`,
       String.raw`$F'(x) = f(x), \forall x \in K$`,
       [
         String.raw`$f'(x) = F(x), \forall x \in K$`,
         String.raw`$F(x) = f'(x) + C, \forall x \in K$`,
         String.raw`$F'(x) = f'(x), \forall x \in K$`,
       ],
-      String.raw`Dựa vào định nghĩa nguyên hàm (Bài 11 SGK): $F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \in K$.`,
-      String.raw`Theo định nghĩa nguyên hàm trong SGK trang 5, hàm số $F(x)$ được gọi là nguyên hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \in K$.`
+      String.raw`Dựa vào định nghĩa nguyên hàm: $F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \in K$.`,
+      String.raw`Theo định nghĩa nguyên hàm, hàm số $F(x)$ được gọi là nguyên hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \in K$.`
     ),
 
     createMcqItem(
       'nb-power-rule',
       'Nhận biết',
-      String.raw`*(Theo Bài 4.1 SBT)* Với $\alpha \ne -1$, họ tất cả các nguyên hàm của hàm số $f(x) = x^\alpha$ trên khoảng $(0; +\infty)$ là:`,
+      String.raw`Với $\alpha \ne -1$, họ tất cả các nguyên hàm của hàm số $f(x) = x^\alpha$ trên khoảng $(0; +\infty)$ là:`,
       String.raw`$\frac{x^{\alpha + 1}}{\alpha + 1} + C$`,
       [
         String.raw`$\alpha x^{\alpha - 1} + C$`,
         String.raw`$\frac{x^\alpha}{\alpha + 1} + C$`,
         String.raw`$(\alpha + 1)x^{\alpha + 1} + C$`,
       ],
-      String.raw`Áp dụng công thức nguyên hàm của hàm số lũy thừa trong bảng nguyên hàm cơ bản (Bài 11 SGK).`,
+      String.raw`Áp dụng công thức nguyên hàm của hàm số lũy thừa trong bảng nguyên hàm cơ bản.`,
       String.raw`Ta có công thức nguyên hàm cơ bản: $\int x^\alpha dx = \frac{x^{\alpha+1}}{\alpha+1} + C \ (\alpha \ne -1)$.`
     ),
 
     createMcqItem(
       'nb-inv-x',
       'Nhận biết',
-      String.raw`*(Theo Bài 4.3 SGK)* Họ tất cả các nguyên hàm của hàm số $f(x) = \frac{${k}}{x}$ trên khoảng $(0; +\infty)$ là:`,
+      String.raw`Họ tất cả các nguyên hàm của hàm số $f(x) = \frac{${k}}{x}$ trên khoảng $(0; +\infty)$ là:`,
       String.raw`$${k}\ln x + C$`,
       [
         String.raw`$-\frac{${k}}{x^2} + C$`,
@@ -146,7 +145,7 @@ $$\int \frac{${k}}{x}dx = ${k}\int \frac{1}{x}dx = ${k}\ln x + C$$`
     createMcqItem(
       'nb-trig-basic',
       'Nhận biết',
-      String.raw`*(Theo Bài 4.4a SGK)* Tìm họ nguyên hàm của hàm số $f(x) = ${k}\cos x - ${m}\sin x$.`,
+      String.raw`Tìm họ nguyên hàm của hàm số $f(x) = ${k}\cos x - ${m}\sin x$.`,
       String.raw`$${k}\sin x + ${m}\cos x + C$`,
       [
         String.raw`$-${k}\sin x - ${m}\cos x + C$`,
@@ -161,7 +160,7 @@ $$\int (${k}\cos x - ${m}\sin x)dx = ${k}\sin x - ${m}(-\cos x) + C = ${k}\sin x
     createMcqItem(
       'nb-trig-cos2',
       'Nhận biết',
-      String.raw`*(Theo Bài 4.4b SGK)* Trên khoảng $\left(-\frac{\pi}{2}; \frac{\pi}{2}\right)$, họ tất cả các nguyên hàm của hàm số $f(x) = \frac{1}{\cos^2 x}$ là:`,
+      String.raw`Trên khoảng $\left(-\frac{\pi}{2}; \frac{\pi}{2}\right)$, họ tất cả các nguyên hàm của hàm số $f(x) = \frac{1}{\cos^2 x}$ là:`,
       String.raw`$\tan x + C$`,
       [
         String.raw`$-\tan x + C$`,
@@ -169,13 +168,13 @@ $$\int (${k}\cos x - ${m}\sin x)dx = ${k}\sin x - ${m}(-\cos x) + C = ${k}\sin x
         String.raw`$-\cot x + C$`,
       ],
       String.raw`Vì $(\tan x)' = \frac{1}{\cos^2 x}$ nên nguyên hàm của $\frac{1}{\cos^2 x}$ là $\tan x + C$.`,
-      String.raw`Theo bảng nguyên hàm cơ bản (Bài 11 SGK), ta có $\int \frac{1}{\cos^2 x}dx = \tan x + C$.`
+      String.raw`Theo bảng nguyên hàm cơ bản, ta có $\int \frac{1}{\cos^2 x}dx = \tan x + C$.`
     ),
 
     createMcqItem(
       'nb-exp-ax',
       'Nhận biết',
-      String.raw`*(Theo Bài 4.5 SGK)* Họ tất cả các nguyên hàm của hàm số $f(x) = ${m}^x + e^x$ trên $\mathbb{R}$ là:`,
+      String.raw`Họ tất cả các nguyên hàm của hàm số $f(x) = ${m}^x + e^x$ trên $\mathbb{R}$ là:`,
       String.raw`$\frac{${m}^x}{\ln ${m}} + e^x + C$`,
       [
         String.raw`$${m}^x\ln ${m} + e^x + C$`,
@@ -190,7 +189,7 @@ $$\int (${m}^x + e^x)dx = \frac{${m}^x}{\ln ${m}} + e^x + C$$`
     createMcqItem(
       'nb-newton-leibniz',
       'Nhận biết',
-      String.raw`*(Theo Bài 12 SGK)* Cho hàm số $f(x)$ liên tục trên đoạn $[a; b]$ và $F(x)$ là một nguyên hàm của $f(x)$ trên $[a; b]$. Biết $F(a) = ${k}$ và $F(b) = ${k + m + 3}$, giá trị của $\int_a^b f(x)dx$ bằng:`,
+      String.raw`Cho hàm số $f(x)$ liên tục trên đoạn $[a; b]$ và $F(x)$ là một nguyên hàm của $f(x)$ trên $[a; b]$. Biết $F(a) = ${k}$ và $F(b) = ${k + m + 3}$, giá trị của $\int_a^b f(x)dx$ bằng:`,
       String.raw`$${m + 3}$`,
       [
         String.raw`$-${m + 3}$`,
@@ -205,14 +204,14 @@ $$\int_a^b f(x)dx = F(b) - F(a) = ${k + m + 3} - ${k} = ${m + 3}$$`
     createMcqItem(
       'nb-area-formula',
       'Nhận biết',
-      String.raw`*(Theo Bài 4.21 SBT)* Cho hai hàm số $y = f(x)$ và $y = g(x)$ liên tục trên đoạn $[a; b]$. Diện tích hình phẳng giới hạn bởi đồ thị hai hàm số đó và hai đường thẳng $x = a, x = b$ được tính theo công thức:`,
+      String.raw`Cho hai hàm số $y = f(x)$ và $y = g(x)$ liên tục trên đoạn $[a; b]$. Diện tích hình phẳng giới hạn bởi đồ thị hai hàm số đó và hai đường thẳng $x = a, x = b$ được tính theo công thức:`,
       String.raw`$S = \int_a^b |f(x) - g(x)|dx$`,
       [
         String.raw`$S = \pi\int_a^b |f(x) - g(x)|dx$`,
         String.raw`$S = \int_a^b [f(x) - g(x)]dx$`,
         String.raw`$S = \pi\int_a^b [f^2(x) - g^2(x)]dx$`,
       ],
-      String.raw`Nhớ lại công thức tính diện tích hình phẳng giới hạn bởi 2 đồ thị hàm số ở Bài 13 SGK (luôn có dấu giá trị tuyệt đối và không nhân $\pi$).`,
+      String.raw`Nhớ lại công thức tính diện tích hình phẳng giới hạn bởi 2 đồ thị hàm số (luôn có dấu giá trị tuyệt đối và không nhân $\pi$).`,
       String.raw`Diện tích hình phẳng giới hạn bởi đồ thị hai hàm số $y = f(x), y = g(x)$ và $x = a, x = b$ là:
 $$S = \int_a^b |f(x) - g(x)|dx$$`
     ),
@@ -220,7 +219,7 @@ $$S = \int_a^b |f(x) - g(x)|dx$$`
     createMcqItem(
       'nb-vol-section-formula',
       'Nhận biết',
-      String.raw`*(Theo Bài 13 SGK)* Cắt một vật thể giới hạn bởi hai mặt phẳng $x = a$ và $x = b$ bởi mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ $x \ (a \le x \le b)$ thì được thiết diện có diện tích là hàm liên tục $S(x)$. Thể tích $V$ của vật thể là:`,
+      String.raw`Cắt một vật thể giới hạn bởi hai mặt phẳng $x = a$ và $x = b$ bởi mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ $x \ (a \le x \le b)$ thì được thiết diện có diện tích là hàm liên tục $S(x)$. Thể tích $V$ của vật thể là:`,
       String.raw`$V = \int_a^b S(x)dx$`,
       [
         String.raw`$V = \pi\int_a^b S(x)dx$`,
@@ -228,14 +227,14 @@ $$S = \int_a^b |f(x) - g(x)|dx$$`
         String.raw`$V = \int_a^b S^2(x)dx$`,
       ],
       String.raw`Phân biệt rõ: Công thức tính thể tích vật thể khi biết diện tích mặt cắt $S(x)$ thì **không** có nhân tử $\pi$ và không bình phương $S(x)$.`,
-      String.raw`Theo công thức thể tích vật thể trong Bài 13 SGK trang 22:
+      String.raw`Theo công thức tính thể tích vật thể theo diện tích thiết diện:
 $$V = \int_a^b S(x)dx$$`
     ),
 
     createMcqItem(
       'nb-vol-rot-formula',
       'Nhận biết',
-      String.raw`*(Theo Bài 4.20 SGK)* Cho hàm số $y = f(x)$ liên tục trên $[a; b]$. Thể tích khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi đồ thị $y = f(x)$, trục $Ox$ và $x = a, x = b$ quanh trục $Ox$ là:`,
+      String.raw`Cho hàm số $y = f(x)$ liên tục trên $[a; b]$. Thể tích khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi đồ thị $y = f(x)$, trục $Ox$ và $x = a, x = b$ quanh trục $Ox$ là:`,
       String.raw`$V = \pi\int_a^b f^2(x)dx$`,
       [
         String.raw`$V = \int_a^b f^2(x)dx$`,
@@ -250,7 +249,7 @@ $$V = \pi\int_a^b f^2(x)dx$$`
     createMcqItem(
       'nb-area-from-graph',
       'Nhận biết',
-      String.raw`*(Theo Bài 4.21 SBT)* Cho hàm số $y = f(x)$ liên tục trên đoạn $[-1; 3]$, có đồ thị nằm phía trên trục hoành trên $[-1; 1]$ và nằm phía dưới trục hoành trên $[1; 3]$. Diện tích $S$ của hình phẳng giới hạn bởi đồ thị $y = f(x)$, trục hoành và $x = -1, x = 3$ bằng:`,
+      String.raw`Cho hàm số $y = f(x)$ liên tục trên đoạn $[-1; 3]$, có đồ thị nằm phía trên trục hoành trên $[-1; 1]$ và nằm phía dưới trục hoành trên $[1; 3]$. Diện tích $S$ của hình phẳng giới hạn bởi đồ thị $y = f(x)$, trục hoành và $x = -1, x = 3$ bằng:`,
       String.raw`$S = \int_{-1}^1 f(x)dx - \int_1^3 f(x)dx$`,
       [
         String.raw`$S = \int_{-1}^1 f(x)dx + \int_1^3 f(x)dx$`,
@@ -272,7 +271,7 @@ $$S = \int_{-1}^3 |f(x)|dx = \int_{-1}^1 f(x)dx + \int_1^3 [-f(x)]dx = \int_{-1}
     createMcqItem(
       'nb-poly-prim',
       'Nhận biết',
-      String.raw`*(Theo Bài 4.2 SGK)* Họ tất cả các nguyên hàm của hàm số $f(x) = 3x^2 - ${2 * k}x + 1$ là:`,
+      String.raw`Họ tất cả các nguyên hàm của hàm số $f(x) = 3x^2 - ${2 * k}x + 1$ là:`,
       String.raw`$x^3 - ${k}x^2 + x + C$`,
       [
         String.raw`$6x - ${2 * k} + C$`,
@@ -284,11 +283,11 @@ $$S = \int_{-1}^3 |f(x)|dx = \int_{-1}^1 f(x)dx + \int_1^3 [-f(x)]dx = \int_{-1}
 $$\int (3x^2 - ${2 * k}x + 1)dx = 3\cdot\frac{x^3}{3} - ${2 * k}\cdot\frac{x^2}{2} + x + C = x^3 - ${k}x^2 + x + C$$`
     ),
 
-    // --- NHÓM 2: MỨC ĐỘ THÔNG HIỂU (BÁM SÁT BÀI TẬP SGK & SBT) ---
+    // --- NHÓM 2: MỨC ĐỘ THÔNG HIỂU ---
     createMcqItem(
       'th-find-C-poly',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.2 SGK & 4.2 SBT)* Tìm nguyên hàm $F(x)$ của hàm số $f(x) = 2x + ${k}$ biết rằng $F(1) = ${k + 5}$.`,
+      String.raw`Tìm nguyên hàm $F(x)$ của hàm số $f(x) = 2x + ${k}$ biết rằng $F(1) = ${k + 5}$.`,
       String.raw`$F(x) = x^2 + ${k}x + 4$`,
       [
         String.raw`$F(x) = x^2 + ${k}x + ${k + 5}$`,
@@ -305,7 +304,7 @@ Vậy $F(x) = x^2 + ${k}x + 4$.`
     createMcqItem(
       'th-radical-prim',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.3b SGK & 4.4 SBT)* Trên khoảng $(0; +\infty)$, họ tất cả các nguyên hàm của hàm số $f(x) = 3\sqrt{x} + \frac{1}{\sqrt{x}}$ là:`,
+      String.raw`Trên khoảng $(0; +\infty)$, họ tất cả các nguyên hàm của hàm số $f(x) = 3\sqrt{x} + \frac{1}{\sqrt{x}}$ là:`,
       String.raw`$2x\sqrt{x} + 2\sqrt{x} + C$`,
       [
         String.raw`$2x\sqrt{x} + \frac{1}{2\sqrt{x}} + C$`,
@@ -321,7 +320,7 @@ $$\int f(x)dx = 3\cdot\frac{x^{\frac{3}{2}}}{\frac{3}{2}} + \frac{x^{\frac{1}{2}
     createMcqItem(
       'th-rational-expand',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.3c SGK & 4.5 SBT)* Tìm họ nguyên hàm của hàm số $f(x) = \frac{(x - 1)^2}{x^2}$ trên khoảng $(0; +\infty)$.`,
+      String.raw`Tìm họ nguyên hàm của hàm số $f(x) = \frac{(x - 1)^2}{x^2}$ trên khoảng $(0; +\infty)$.`,
       String.raw`$x - 2\ln x - \frac{1}{x} + C$`,
       [
         String.raw`$x - 2\ln x + \frac{1}{x} + C$`,
@@ -338,7 +337,7 @@ $$\int f(x)dx = x - 2\ln x - \frac{1}{x} + C$$`
     createMcqItem(
       'th-trig-tan2',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.4b SGK & 4.6a SBT)* Tìm họ nguyên hàm của hàm số $f(x) = ${k} + \tan^2 x$ trên khoảng $\left(-\frac{\pi}{2}; \frac{\pi}{2}\right)$.`,
+      String.raw`Tìm họ nguyên hàm của hàm số $f(x) = ${k} + \tan^2 x$ trên khoảng $\left(-\frac{\pi}{2}; \frac{\pi}{2}\right)$.`,
       String.raw`$\tan x + ${k - 1}x + C$`,
       [
         String.raw`$\tan x + ${k}x + C$`,
@@ -355,7 +354,7 @@ $$\int f(x)dx = \tan x + ${k - 1}x + C$$`
     createMcqItem(
       'th-trig-half-angle',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.4c SGK)* Họ tất cả các nguyên hàm của hàm số $f(x) = 2\sin^2\frac{x}{2}$ là:`,
+      String.raw`Họ tất cả các nguyên hàm của hàm số $f(x) = 2\sin^2\frac{x}{2}$ là:`,
       String.raw`$x - \sin x + C$`,
       [
         String.raw`$x + \sin x + C$`,
@@ -370,7 +369,7 @@ $$\int 2\sin^2\frac{x}{2}dx = \int (1 - \cos x)dx = x - \sin x + C$$`
     createMcqItem(
       'th-integral-linear-prop',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.9 SGK & 4.12 SBT)* Cho $\int_0^2 f(x)dx = ${k}$ và $\int_0^2 g(x)dx = -3$. Giá trị của tích phân $I = \int_0^2 [3f(x) - 2g(x) + 1]dx$ bằng:`,
+      String.raw`Cho $\int_0^2 f(x)dx = ${k}$ và $\int_0^2 g(x)dx = -3$. Giá trị của tích phân $I = \int_0^2 [3f(x) - 2g(x) + 1]dx$ bằng:`,
       String.raw`$${3 * k + 8}$`,
       [
         String.raw`$${3 * k + 6}$`,
@@ -385,7 +384,7 @@ $$I = 3\int_0^2 f(x)dx - 2\int_0^2 g(x)dx + \int_0^2 1dx = 3\cdot(${k}) - 2\cdot
     createMcqItem(
       'th-integral-split-bounds',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.9b SGK)* Cho hàm số $f(x)$ liên tục trên $\mathbb{R}$ thỏa mãn $\int_1^5 f(x)dx = ${k + 7}$ và $\int_3^5 f(x)dx = ${k}$. Giá trị của $\int_1^3 f(x)dx$ bằng:`,
+      String.raw`Cho hàm số $f(x)$ liên tục trên $\mathbb{R}$ thỏa mãn $\int_1^5 f(x)dx = ${k + 7}$ và $\int_3^5 f(x)dx = ${k}$. Giá trị của $\int_1^3 f(x)dx$ bằng:`,
       String.raw`$7$`,
       [
         String.raw`$${2 * k + 7}$`,
@@ -400,7 +399,7 @@ $$\int_1^5 f(x)dx = \int_1^3 f(x)dx + \int_3^5 f(x)dx \Rightarrow \int_1^3 f(x)d
     createMcqItem(
       'th-semicircle-geo',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.8b SGK & 4.11b SBT)* Sử dụng ý nghĩa hình học của tích phân, giá trị của tích phân $I = \int_{-${R}}^{${R}} \sqrt{${R * R} - x^2}dx$ bằng:`,
+      String.raw`Sử dụng ý nghĩa hình học của tích phân, giá trị của tích phân $I = \int_{-${R}}^{${R}} \sqrt{${R * R} - x^2}dx$ bằng:`,
       String.raw`$\frac{${R * R}\pi}{2}$`,
       [
         String.raw`$${R * R}\pi$`,
@@ -422,7 +421,7 @@ $$I = \frac{1}{2}\pi R^2 = \frac{${R * R}\pi}{2}$$`,
     createMcqItem(
       'th-trapezoid-geo',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.8a SGK)* Sử dụng ý nghĩa hình học của tích phân, tính $I = \int_1^3 (2x + 1)dx$ thông qua diện tích hình thang vuông.`,
+      String.raw`Sử dụng ý nghĩa hình học của tích phân, tính $I = \int_1^3 (2x + 1)dx$ thông qua diện tích hình thang vuông.`,
       String.raw`$10$`,
       [String.raw`$8$`, String.raw`$12$`, String.raw`$20$`],
       String.raw`Hình thang vuông giới hạn bởi $y = 2x + 1, y = 0, x = 1, x = 3$ có đáy nhỏ $f(1) = 3$, đáy lớn $f(3) = 7$ và chiều cao $h = 3 - 1 = 2$.`,
@@ -440,7 +439,7 @@ $$I = \frac{(3 + 7)\cdot 2}{2} = 10$$`,
     createMcqItem(
       'th-abs-integral',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.10c SGK & 4.14 SBT)* Tính tích phân có chứa dấu giá trị tuyệt đối $I = \int_0^3 |x - ${k === 4 ? 2 : k}|dx$.`,
+      String.raw`Tính tích phân có chứa dấu giá trị tuyệt đối $I = \int_0^3 |x - ${k === 4 ? 2 : k}|dx$.`,
       k === 2 || k === 4 ? String.raw`$\frac{5}{2}$` : String.raw`$\frac{9}{2}$`,
       k === 2 || k === 4
         ? [String.raw`$\frac{3}{2}$`, String.raw`$\frac{7}{2}$`, String.raw`$3$`]
@@ -463,7 +462,7 @@ $$I = \int_0^3 (3 - x)dx = \left(3x - \frac{x^2}{2}\right)\Big|_0^3 = 9 - \frac{
     createMcqItem(
       'th-piecewise-integral',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.15 SBT)* Cho hàm số $f(x) = \begin{cases} 2x + 1 & \text{khi } x \ge 1 \\ 3x^2 & \text{khi } x < 1 \end{cases}$. Giá trị của tích phân $I = \int_0^2 f(x)dx$ bằng:`,
+      String.raw`Cho hàm số $f(x) = \begin{cases} 2x + 1 & \text{khi } x \ge 1 \\ 3x^2 & \text{khi } x < 1 \end{cases}$. Giá trị của tích phân $I = \int_0^2 f(x)dx$ bằng:`,
       String.raw`$5$`,
       [String.raw`$4$`, String.raw`$6$`, String.raw`$7$`],
       String.raw`Tách cận tích phân tại điểm chuyển công thức $x = 1$: $I = \int_0^1 f(x)dx + \int_1^2 f(x)dx$.`,
@@ -474,7 +473,7 @@ $$I = \int_0^1 3x^2 dx + \int_1^2 (2x + 1)dx = x^3\Big|_0^1 + (x^2 + x)\Big|_1^2
     createMcqItem(
       'th-vol-sqrt-linear',
       'Thông hiểu',
-      String.raw`*(Theo Bài 4.18 SBT & Ví dụ 7 SGK)* Thể tích khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi đồ thị $y = \sqrt{x^2 + ${k}}$, trục hoành và hai đường thẳng $x = 0, x = 1$ quanh trục $Ox$ bằng:`,
+      String.raw`Thể tích khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi đồ thị $y = \sqrt{x^2 + ${k}}$, trục hoành và hai đường thẳng $x = 0, x = 1$ quanh trục $Ox$ bằng:`,
       String.raw`$\frac{${3 * k + 1}\pi}{3}$`,
       [
         String.raw`$\frac{${3 * k + 1}}{3}$`,
@@ -493,11 +492,11 @@ $$V = \pi\int_0^1 \left(\sqrt{x^2 + ${k}}\right)^2 dx = \pi\int_0^1 (x^2 + ${k})
       }
     ),
 
-    // --- NHÓM 3: MỨC ĐỘ VẬN DỤNG (BÁM SÁT BÀI TẬP SGK & SBT) ---
+    // --- NHÓM 3: MỨC ĐỘ VẬN DỤNG ---
     createMcqItem(
       'vd-area-parabola-line',
       'Vận dụng',
-      String.raw`*(Theo Bài 4.14a SGK & 4.22 SBT)* Diện tích hình phẳng giới hạn bởi parabol $y = x^2 - 2x$ và đường thẳng $y = x$ bằng:`,
+      String.raw`Diện tích hình phẳng giới hạn bởi parabol $y = x^2 - 2x$ và đường thẳng $y = x$ bằng:`,
       String.raw`$\frac{9}{2}$`,
       [
         String.raw`$\frac{9}{4}$`,
@@ -522,7 +521,7 @@ $$S = \int_0^3 (3x - x^2)dx = \left(\frac{3x^2}{2} - \frac{x^3}{3}\right)\Big|_0
     createMcqItem(
       'vd-area-cubic-3-roots',
       'Vận dụng',
-      String.raw`*(Theo Bài 4.15 SGK & 4.23a SBT)* Tính diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = x^3 - 3x$ và đường thẳng $y = x$.`,
+      String.raw`Tính diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = x^3 - 3x$ và đường thẳng $y = x$.`,
       String.raw`$8$`,
       [String.raw`$4$`, String.raw`$0$`, String.raw`$16$`],
       String.raw`Giải phương trình hoành độ giao điểm $x^3 - 3x = x \Leftrightarrow x^3 - 4x = 0$ tìm được 3 nghiệm $x = -2; 0; 2$. Tách tích phân thành 2 đoạn $[-2; 0]$ và $[0; 2]$.`,
@@ -543,7 +542,7 @@ $$S = \int_{-2}^0 (x^3 - 4x)dx + \int_0^2 (4x - x^3)dx = 4 + 4 = 8$$`,
     createMcqItem(
       'vd-area-exp',
       'Vận dụng',
-      String.raw`*(Theo Bài 4.14b SGK)* Diện tích hình phẳng giới hạn bởi hai đồ thị hàm số $y = e^x, y = e^{-x}$ và hai đường thẳng $x = 0, x = 2$ bằng:`,
+      String.raw`Diện tích hình phẳng giới hạn bởi hai đồ thị hàm số $y = e^x, y = e^{-x}$ và hai đường thẳng $x = 0, x = 2$ bằng:`,
       String.raw`$e^2 + \frac{1}{e^2} - 2$`,
       [
         String.raw`$e^2 - \frac{1}{e^2}$`,
@@ -566,7 +565,7 @@ $$S = \int_0^2 (e^x - e^{-x})dx = (e^x + e^{-x})\Big|_0^2 = \left(e^2 + \frac{1}
     createMcqItem(
       'vd-vol-parabola-417',
       'Vận dụng',
-      String.raw`*(Bài 4.17 SGK)* Thể tích của khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi các đường $y = 2x - x^2, y = 0, x = 0, x = 2$ xung quanh trục $Ox$ bằng:`,
+      String.raw`Thể tích của khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi các đường $y = 2x - x^2, y = 0, x = 0, x = 2$ xung quanh trục $Ox$ bằng:`,
       String.raw`$\frac{16\pi}{15}$`,
       [
         String.raw`$\frac{16}{15}$`,
@@ -578,7 +577,7 @@ $$S = \int_0^2 (e^x - e^{-x})dx = (e^x + e^{-x})\Big|_0^2 = \left(e^2 + \frac{1}
 $$V = \pi\int_0^2 (2x - x^2)^2 dx = \pi\int_0^2 (4x^2 - 4x^3 + x^4)dx = \pi\left(\frac{4}{3}x^3 - x^4 + \frac{x^5}{5}\right)\Big|_0^2 = \frac{16\pi}{15}$$`,
       {
         mode: '3d',
-        title: 'Bài 4.17 SGK: Khối tròn xoay y = 2x - x^2 trên [0; 2]',
+        title: 'Khối tròn xoay y = 2x - x^2 trên [0; 2]',
         fExpr: '2*x - x^2',
         defaultA: 0,
         defaultB: 2,
@@ -588,7 +587,7 @@ $$V = \pi\int_0^2 (2x - x^2)^2 dx = \pi\int_0^2 (4x^2 - 4x^3 + x^4)dx = \pi\left
     createMcqItem(
       'vd-vol-washer-sbt424b',
       'Vận dụng',
-      String.raw`*(Bài 4.24b SBT)* Gọi $(H)$ là hình phẳng giới hạn bởi đồ thị hai hàm số $y = 4x$ và $y = x^3$ với $0 \le x \le 2$. Thể tích khối tròn xoay sinh ra khi quay $(H)$ quanh trục $Ox$ bằng:`,
+      String.raw`Gọi $(H)$ là hình phẳng giới hạn bởi đồ thị hai hàm số $y = 4x$ và $y = x^3$ với $0 \le x \le 2$. Thể tích khối tròn xoay sinh ra khi quay $(H)$ quanh trục $Ox$ bằng:`,
       String.raw`$\frac{512\pi}{21}$`,
       [
         String.raw`$\frac{256\pi}{21}$`,
@@ -600,7 +599,7 @@ $$V = \pi\int_0^2 (2x - x^2)^2 dx = \pi\int_0^2 (4x^2 - 4x^3 + x^4)dx = \pi\left
 $$V = \pi\int_0^2 \left[(4x)^2 - (x^3)^2\right]dx = \pi\int_0^2 (16x^2 - x^6)dx = \pi\left(\frac{16x^3}{3} - \frac{x^7}{7}\right)\Big|_0^2 = \frac{512\pi}{21}$$`,
       {
         mode: '3d',
-        title: 'Bài 4.24b SBT: Quay miền giữa y = 4x và y = x^3 trên [0; 2]',
+        title: 'Quay miền phẳng giữa y = 4x và y = x^3 trên [0; 2]',
         fExpr: '4*x',
         gExpr: 'x^3',
         defaultA: 0,
@@ -611,7 +610,7 @@ $$V = \pi\int_0^2 \left[(4x)^2 - (x^3)^2\right]dx = \pi\int_0^2 (16x^2 - x^6)dx 
     createMcqItem(
       'vd-vol-trig-cos',
       'Vận dụng',
-      String.raw`*(Bài 4.26a SGK)* Thể tích khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi các đường $y = \sqrt{\cos x}, y = 0, x = 0, x = \frac{\pi}{2}$ xung quanh trục $Ox$ bằng:`,
+      String.raw`Thể tích khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi các đường $y = \sqrt{\cos x}, y = 0, x = 0, x = \frac{\pi}{2}$ xung quanh trục $Ox$ bằng:`,
       String.raw`$\pi$`,
       [
         String.raw`$\frac{\pi}{2}$`,
@@ -623,7 +622,7 @@ $$V = \pi\int_0^2 \left[(4x)^2 - (x^3)^2\right]dx = \pi\int_0^2 (16x^2 - x^6)dx 
 $$V = \pi\int_0^{\pi/2} (\sqrt{\cos x})^2 dx = \pi\int_0^{\pi/2} \cos x dx = \pi\sin x\Big|_0^{\pi/2} = \pi(1 - 0) = \pi$$`,
       {
         mode: '3d',
-        title: 'Bài 4.26a SGK: Khối tròn xoay y = sqrt(cos(x)) trên [0; pi/2]',
+        title: 'Khối tròn xoay y = sqrt(cos(x)) trên [0; pi/2]',
         fExpr: 'sqrt(max(0, cos(x)))',
         defaultA: 0,
         defaultB: 1.57,
@@ -633,7 +632,7 @@ $$V = \pi\int_0^{\pi/2} (\sqrt{\cos x})^2 dx = \pi\int_0^{\pi/2} \cos x dx = \pi
     createMcqItem(
       'vd-vol-cross-square',
       'Vận dụng',
-      String.raw`*(Bài 4.26b SBT)* Một vật thể nằm giữa hai mặt phẳng $x = -2$ và $x = 2$, có đáy là hình tròn $x^2 + y^2 \le 4$. Biết thiết diện của vật thể bị cắt bởi mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ $x \in [-2; 2]$ là một hình vuông. Thể tích của vật thể đó bằng:`,
+      String.raw`Một vật thể nằm giữa hai mặt phẳng $x = -2$ và $x = 2$, có đáy là hình tròn $x^2 + y^2 \le 4$. Biết thiết diện của vật thể bị cắt bởi mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ $x \in [-2; 2]$ là một hình vuông. Thể tích của vật thể đó bằng:`,
       String.raw`$\frac{128}{3}$`,
       [
         String.raw`$\frac{128\pi}{3}$`,
@@ -646,7 +645,7 @@ Thể tích vật thể là:
 $$V = \int_{-2}^2 4(4 - x^2)dx = 4\left(4x - \frac{x^3}{3}\right)\Big|_{-2}^2 = \frac{128}{3}$$`,
       {
         mode: '2d',
-        title: 'Bài 4.26b SBT: Hàm diện tích thiết diện S(x) = 4(4 - x^2) trên [-2; 2]',
+        title: 'Hàm diện tích thiết diện S(x) = 4(4 - x^2) trên [-2; 2]',
         fExpr: '4*(4 - x^2)',
         defaultA: -2,
         defaultB: 2,
@@ -656,7 +655,7 @@ $$V = \int_{-2}^2 4(4 - x^2)dx = 4\left(4x - \frac{x^3}{3}\right)\Big|_{-2}^2 = 
     createMcqItem(
       'vd-kinematics-sgk411',
       'Vận dụng',
-      String.raw`*(Bài 4.11 SGK)* Một vật chuyển động dọc theo một đường thẳng với vận tốc $v(t) = t^2 - t - 6 \text{ (m/s)}$ trong khoảng thời gian $1 \le t \le 4$. Tổng quãng đường vật đi được trong khoảng thời gian đó bằng:`,
+      String.raw`Một vật chuyển động dọc theo một đường thẳng với vận tốc $v(t) = t^2 - t - 6 \text{ (m/s)}$ trong khoảng thời gian $1 \le t \le 4$. Tổng quãng đường vật đi được trong khoảng thời gian đó bằng:`,
       String.raw`$\frac{61}{6}\text{ (m)}$`,
       [
         String.raw`$-\frac{9}{2}\text{ (m)}$`,
@@ -669,18 +668,18 @@ Tổng quãng đường vật đi được là:
 $$s = \int_1^4 |t^2 - t - 6|dt = -\int_1^3 (t^2 - t - 6)dt + \int_3^4 (t^2 - t - 6)dt = \frac{22}{3} + \frac{17}{6} = \frac{61}{6}\text{ (m)}$$`,
       {
         mode: '2d',
-        title: 'Bài 4.11 SGK: Đồ thị vận tốc v(t) = t^2 - t - 6 trên [1; 4]',
+        title: 'Đồ thị vận tốc v(t) = t^2 - t - 6 trên [1; 4]',
         fExpr: 'x^2 - x - 6',
         defaultA: 1,
         defaultB: 4,
       }
     ),
 
-    // --- NHÓM 4: MỨC ĐỘ VẬN DỤNG CAO (BÀI TOÁN THỰC TIỄN SGK & SBT) ---
+    // --- NHÓM 4: MỨC ĐỘ VẬN DỤNG CAO ---
     createMcqItem(
       'vdc-vase-sgk435',
       'Vận dụng cao',
-      String.raw`*(Bài 4.35 SGK)* Một nghệ nhân làm một chiếc bình gốm có mặt trong sinh ra khi quay đồ thị hàm số $y = \frac{1}{175}x^2 + \frac{3}{35}x + 5 \ (0 \le x \le 30)$ ($x, y$ tính theo $\text{cm}$) quanh trục $Ox$. Biết bình gốm có độ dày không đổi là $1\text{ cm}$, thể tích đất sét cần sử dụng để làm thân bình gốm là:`,
+      String.raw`Một nghệ nhân làm một chiếc bình gốm có mặt trong sinh ra khi quay đồ thị hàm số $y = \frac{1}{175}x^2 + \frac{3}{35}x + 5 \ (0 \le x \le 30)$ ($x, y$ tính theo $\text{cm}$) quanh trục $Ox$. Biết bình gốm có độ dày không đổi là $1\text{ cm}$, thể tích đất sét cần sử dụng để làm thân bình gốm là:`,
       String.raw`$510\pi\text{ (cm}^3\text{)}$`,
       [
         String.raw`$480\pi\text{ (cm}^3\text{)}$`,
@@ -693,7 +692,7 @@ Thể tích đất sét cần dùng là:
 $$V = \pi\int_0^{30} \left[R_2^2(x) - R_1^2(x)\right]dx = \pi\int_0^{30} \left(\frac{2}{175}x^2 + \frac{6}{35}x + 11\right)dx = 510\pi\text{ (cm}^3\text{)}$$`,
       {
         mode: '3d',
-        title: 'Bài 4.35 SGK: Mô phỏng 3D Bình gốm trên [0; 30]',
+        title: 'Mô phỏng 3D Bình gốm trên [0; 30]',
         fExpr: '(1/175)*x^2 + (3/35)*x + 6',
         defaultA: 0,
         defaultB: 30,
@@ -703,7 +702,7 @@ $$V = \pi\int_0^{30} \left[R_2^2(x) - R_1^2(x)\right]dx = \pi\int_0^{30} \left(\
     createMcqItem(
       'vdc-spherical-cap-sgk418',
       'Vận dụng cao',
-      String.raw`*(Bài 4.18 SGK)* Quay hình phẳng giới hạn bởi cung tròn $y = \sqrt{R^2 - x^2}$, trục hoành $Ox$ và hai đường thẳng $x = R - h, x = R \ (0 < h < R)$ xung quanh trục $Ox$ ta thu được một khối chỏm cầu có chiều cao $h$. Công thức thể tích khối chỏm cầu đó là:`,
+      String.raw`Quay hình phẳng giới hạn bởi cung tròn $y = \sqrt{R^2 - x^2}$, trục hoành $Ox$ và hai đường thẳng $x = R - h, x = R \ (0 < h < R)$ xung quanh trục $Ox$ ta thu được một khối chỏm cầu có chiều cao $h$. Công thức thể tích khối chỏm cầu đó là:`,
       String.raw`$V = \pi h^2\left(R - \frac{h}{3}\right)$`,
       [
         String.raw`$V = \pi R^2\left(h - \frac{R}{3}\right)$`,
@@ -715,7 +714,7 @@ $$V = \pi\int_0^{30} \left[R_2^2(x) - R_1^2(x)\right]dx = \pi\int_0^{30} \left(\
 $$V = \pi\int_{R-h}^R (R^2 - x^2)dx = \pi\left(R^2 x - \frac{x^3}{3}\right)\Big|_{R-h}^R = \pi h^2\left(R - \frac{h}{3}\right)$$`,
       {
         mode: '3d',
-        title: 'Bài 4.18 SGK: Khối chỏm cầu bán kính R = 3 trên [1; 3]',
+        title: 'Khối chỏm cầu bán kính R = 3 trên [1; 3]',
         fExpr: 'sqrt(max(0, 9 - x^2))',
         defaultA: 1,
         defaultB: 3,
@@ -725,7 +724,7 @@ $$V = \pi\int_{R-h}^R (R^2 - x^2)dx = \pi\left(R^2 x - \frac{x^3}{3}\right)\Big|
     createMcqItem(
       'vdc-lorenz-gini-sgk416',
       'Vận dụng cao',
-      String.raw`*(Bài 4.16 SGK)* Trong kinh tế học, đường cong Lorenz $y = L(x)$ biểu diễn tỉ lệ thu nhập tích lũy của $x \ (0 \le x \le 1)$ phần trăm hộ gia đình. Hệ số bất bình đẳng thu nhập Gini được tính bởi $G = 2\int_0^1 [x - L(x)]dx$. Nếu đường cong Lorenz của một quốc gia là $L(x) = x^2$ thì hệ số Gini bằng:`,
+      String.raw`Trong kinh tế học, đường cong Lorenz $y = L(x)$ biểu diễn tỉ lệ thu nhập tích lũy của $x \ (0 \le x \le 1)$ phần trăm hộ gia đình. Hệ số bất bình đẳng thu nhập Gini được tính bởi $G = 2\int_0^1 [x - L(x)]dx$. Nếu đường cong Lorenz của một quốc gia là $L(x) = x^2$ thì hệ số Gini bằng:`,
       String.raw`$\frac{1}{3}$`,
       [
         String.raw`$\frac{1}{6}$`,
@@ -737,7 +736,7 @@ $$V = \pi\int_{R-h}^R (R^2 - x^2)dx = \pi\left(R^2 x - \frac{x^3}{3}\right)\Big|
 $$G = 2\int_0^1 (x - x^2)dx = 2\left(\frac{x^2}{2} - \frac{x^3}{3}\right)\Big|_0^1 = 2\cdot\frac{1}{6} = \frac{1}{3}$$`,
       {
         mode: '2d',
-        title: 'Bài 4.16 SGK: Đường cong Lorenz L(x) = x^2 và đường bình đẳng y = x',
+        title: 'Đường cong Lorenz L(x) = x^2 và đường bình đẳng y = x',
         fExpr: 'x',
         gExpr: 'x^2',
         defaultA: 0,
@@ -748,7 +747,7 @@ $$G = 2\int_0^1 (x - x^2)dx = 2\left(\frac{x^2}{2} - \frac{x^3}{3}\right)\Big|_0
     createMcqItem(
       'vdc-divide-area-sbt444',
       'Vận dụng cao',
-      String.raw`*(Bài 4.44 SBT)* Cho hình phẳng $(H)$ giới hạn bởi đồ thị hàm số $y = \sqrt{x}$, trục hoành và đường thẳng $x = 4$. Đường thẳng $x = m \ (0 < m < 4)$ chia hình phẳng $(H)$ thành hai phần có diện tích bằng nhau. Giá trị của $m$ bằng:`,
+      String.raw`Cho hình phẳng $(H)$ giới hạn bởi đồ thị hàm số $y = \sqrt{x}$, trục hoành và đường thẳng $x = 4$. Đường thẳng $x = m \ (0 < m < 4)$ chia hình phẳng $(H)$ thành hai phần có diện tích bằng nhau. Giá trị của $m$ bằng:`,
       String.raw`$2\sqrt[3]{2}$`,
       [
         String.raw`$2$`,
@@ -760,7 +759,7 @@ $$G = 2\int_0^1 (x - x^2)dx = 2\left(\frac{x^2}{2} - \frac{x^3}{3}\right)\Big|_0
 $$\int_0^m \sqrt{x}dx = \frac{1}{2}\int_0^4 \sqrt{x}dx \Leftrightarrow \frac{2}{3}m^{\frac{3}{2}} = \frac{1}{2}\cdot\frac{2}{3}\cdot 4^{\frac{3}{2}} \Leftrightarrow m^{\frac{3}{2}} = 4 \Leftrightarrow m = 4^{\frac{2}{3}} = 2\sqrt[3]{2}$$`,
       {
         mode: '2d',
-        title: 'Bài 4.44 SBT: Đường thẳng x = m chia đôi diện tích hình phẳng y = sqrt(x)',
+        title: 'Đường thẳng x = m chia đôi diện tích hình phẳng y = sqrt(x)',
         fExpr: 'sqrt(max(0, x))',
         defaultA: 0,
         defaultB: 2.52,
@@ -770,7 +769,7 @@ $$\int_0^m \sqrt{x}dx = \frac{1}{2}\int_0^4 \sqrt{x}dx \Leftrightarrow \frac{2}{
     createMcqItem(
       'vdc-salmon-sgk431',
       'Vận dụng cao',
-      String.raw`*(Bài 4.31 SGK)* Cá hồi Thái Bình Dương bơi ngược dòng để đẻ trứng. Khoa học đã chứng minh vận tốc bơi của cá khi nước đứng yên là $v(u) = -\frac{1}{8}u^2 + \frac{5}{2}u \text{ (km/h)}$, trong đó $u$ là nồng độ chất kích thích sinh học. Nếu vận tốc dòng nước chảy ngược là $5\text{ km/h}$, giá trị trung bình của vận tốc thực tế của cá hồi trên đoạn $u \in [2; 10]$ gần nhất với kết quả nào?`,
+      String.raw`Cá hồi Thái Bình Dương bơi ngược dòng để đẻ trứng. Khoa học đã chứng minh vận tốc bơi của cá khi nước đứng yên là $v(u) = -\frac{1}{8}u^2 + \frac{5}{2}u \text{ (km/h)}$, trong đó $u$ là nồng độ chất kích thích sinh học. Nếu vận tốc dòng nước chảy ngược là $5\text{ km/h}$, giá trị trung bình của vận tốc thực tế của cá hồi trên đoạn $u \in [2; 10]$ gần nhất với kết quả nào?`,
       String.raw`$4,83\text{ km/h}$`,
       [
         String.raw`$9,83\text{ km/h}$`,
@@ -783,7 +782,7 @@ Giá trị trung bình trên đoạn $[2; 10]$ là:
 $$\bar{v} = \frac{1}{10 - 2}\int_2^{10} \left(-\frac{1}{8}u^2 + \frac{5}{2}u - 5\right)du = \frac{29}{6} \approx 4,83\text{ (km/h)}$$`,
       {
         mode: '2d',
-        title: 'Bài 4.31 SGK: Vận tốc bơi ngược dòng của cá hồi trên [2; 10]',
+        title: 'Vận tốc bơi ngược dòng của cá hồi trên [2; 10]',
         fExpr: '-(1/8)*x^2 + 2.5*x - 5',
         defaultA: 2,
         defaultB: 10,
@@ -797,7 +796,7 @@ $$\bar{v} = \frac{1}{10 - 2}\int_2^{10} \left(-\frac{1}{8}u^2 + \frac{5}{2}u - 5
       bankKey: 'short-bullet-sgk47',
       part: 'short',
       level: 'Vận dụng',
-      questionLatex: String.raw`*(Theo Bài 4.7 SGK & 4.8 SBT)* Một viên đạn được bắn thẳng đứng lên trên từ mặt đất (độ cao $s(0) = 0\text{ m}$) với vận tốc ban đầu $v_0 = 29,4\text{ m/s}$. Biết vận tốc của viên đạn tại thời điểm $t$ giây là $v(t) = 29,4 - 9,8t\text{ (m/s)}$. Độ cao lớn nhất mà viên đạn đạt được là bao nhiêu mét?`,
+      questionLatex: String.raw`Một viên đạn được bắn thẳng đứng lên trên từ mặt đất (độ cao $s(0) = 0\text{ m}$) với vận tốc ban đầu $v_0 = 29,4\text{ m/s}$. Biết vận tốc của viên đạn tại thời điểm $t$ giây là $v(t) = 29,4 - 9,8t\text{ (m/s)}$. Độ cao lớn nhất mà viên đạn đạt được là bao nhiêu mét?`,
       shortAnswer: 44.1,
       tolerance: 0.05,
       unitHint: 'Đơn vị: mét (VD: 44,1)',
@@ -808,7 +807,7 @@ $$h_{\max} = \int_0^3 (29,4 - 9,8t)dt = \left(29,4t - 4,9t^2\right)\Big|_0^3 = 8
 **Đáp số:** $44,1$.`,
       geogebra: {
         mode: '2d',
-        title: 'Bài 4.7 SGK: Vận tốc viên đạn v(t) = 29,4 - 9,8t trên [0; 3]',
+        title: 'Vận tốc viên đạn v(t) = 29,4 - 9,8t trên [0; 3]',
         fExpr: '29.4 - 9.8*x',
         defaultA: 0,
         defaultB: 3,
@@ -818,7 +817,7 @@ $$h_{\max} = \int_0^3 (29,4 - 9,8t)dt = \left(29,4t - 4,9t^2\right)\Big|_0^3 = 8
       bankKey: 'short-profit-sgk412',
       part: 'short',
       level: 'Vận dụng',
-      questionLatex: String.raw`*(Theo Bài 4.12 SGK & 4.17 SBT)* Giả sử doanh thu biên và chi phí biên của một xưởng sản xuất lần lượt là $R'(t) = 20 - 2t$ và $C'(t) = 4 + 0,4t$ (tính bằng triệu đồng/tuần). Tính tổng lợi nhuận thu được của xưởng trong $5$ tuần đầu tiên (từ $t = 0$ đến $t = 5$, đơn vị: triệu đồng).`,
+      questionLatex: String.raw`Giả sử doanh thu biên và chi phí biên của một xưởng sản xuất lần lượt là $R'(t) = 20 - 2t$ và $C'(t) = 4 + 0,4t$ (tính bằng triệu đồng/tuần). Tính tổng lợi nhuận thu được của xưởng trong $5$ tuần đầu tiên (từ $t = 0$ đến $t = 5$, đơn vị: triệu đồng).`,
       shortAnswer: 50,
       tolerance: 0.05,
       unitHint: 'Đơn vị: triệu đồng',
@@ -828,7 +827,7 @@ $$P = \int_0^5 \left[(20 - 2t) - (4 + 0,4t)\right]dt = \int_0^5 (16 - 2,4t)dt = 
 **Đáp số:** $50$.`,
       geogebra: {
         mode: '2d',
-        title: 'Bài 4.12 SGK: Doanh thu biên R(t) và Chi phí biên C(t) trên [0; 5]',
+        title: 'Doanh thu biên R(t) và Chi phí biên C(t) trên [0; 5]',
         fExpr: '20 - 2*x',
         gExpr: '4 + 0.4*x',
         defaultA: 0,
@@ -839,7 +838,7 @@ $$P = \int_0^5 \left[(20 - 2t) - (4 + 0,4t)\right]dt = \int_0^5 (16 - 2,4t)dt = 
       bankKey: 'short-gate-arch-sbt428',
       part: 'short',
       level: 'Vận dụng',
-      questionLatex: String.raw`*(Theo Vận dụng Bài 13 SGK & Bài 4.28 SBT)* Một chiếc cổng hình parabol có chiều rộng chân cổng là $4\text{ m}$ và chiều cao tại đỉnh cổng là $4\text{ m}$. Chọn hệ trục tọa độ $Oxy$ sao cho vòm cổng có phương trình $y = 4 - x^2$ với $-2 \le x \le 2$. Tính diện tích của chiếc cổng đó (làm tròn đến hàng phần trăm, đơn vị: $\text{m}^2$).`,
+      questionLatex: String.raw`Một chiếc cổng hình parabol có chiều rộng chân cổng là $4\text{ m}$ và chiều cao tại đỉnh cổng là $4\text{ m}$. Chọn hệ trục tọa độ $Oxy$ sao cho vòm cổng có phương trình $y = 4 - x^2$ với $-2 \le x \le 2$. Tính diện tích của chiếc cổng đó (làm tròn đến hàng phần trăm, đơn vị: $\text{m}^2$).`,
       shortAnswer: 10.67,
       tolerance: 0.05,
       unitHint: 'Làm tròn 2 chữ số thập phân (VD: 10,67)',
@@ -849,7 +848,7 @@ $$S = \int_{-2}^2 (4 - x^2)dx = \left(4x - \frac{x^3}{3}\right)\Big|_{-2}^2 = \f
 **Đáp số:** $10,67$.`,
       geogebra: {
         mode: '2d',
-        title: 'Bài 4.28 SBT: Cổng Parabol y = 4 - x^2 trên [-2; 2]',
+        title: 'Cổng Parabol y = 4 - x^2 trên [-2; 2]',
         fExpr: '4 - x^2',
         defaultA: -2,
         defaultB: 2,
@@ -859,7 +858,7 @@ $$S = \int_{-2}^2 (4 - x^2)dx = \left(4x - \frac{x^3}{3}\right)\Big|_{-2}^2 = \f
       bankKey: 'short-surplus-sbt427',
       part: 'short',
       level: 'Vận dụng cao',
-      questionLatex: String.raw`*(Theo Vận dụng 1 Bài 13 SGK & Bài 4.27 SBT)* Cho hàm cầu của một mặt hàng là $p = D(q) = 50 - 0,5q^2$ và mức sản lượng cân bằng thị trường là $q_0 = 6$ (tương ứng mức giá cân bằng $p_0 = D(6) = 32$). Tính **thặng dư tiêu dùng** $CS = \int_0^{q_0} [D(q) - p_0]dq$.`,
+      questionLatex: String.raw`Cho hàm cầu của một mặt hàng là $p = D(q) = 50 - 0,5q^2$ và mức sản lượng cân bằng thị trường là $q_0 = 6$ (tương ứng mức giá cân bằng $p_0 = D(6) = 32$). Tính **thặng dư tiêu dùng** $CS = \int_0^{q_0} [D(q) - p_0]dq$.`,
       shortAnswer: 72,
       tolerance: 0.05,
       unitHint: 'Nhập số nguyên',
@@ -869,7 +868,7 @@ $$CS = \int_0^6 \left(50 - 0,5q^2 - 32\right)dq = \int_0^6 \left(18 - 0,5q^2\rig
 **Đáp số:** $72$.`,
       geogebra: {
         mode: '2d',
-        title: 'Bài 4.27 SBT: Thặng dư tiêu dùng giữa D(q) = 50 - 0,5q^2 và p0 = 32',
+        title: 'Thặng dư tiêu dùng giữa D(q) = 50 - 0,5q^2 và p0 = 32',
         fExpr: '50 - 0.5*x^2',
         gExpr: '32',
         defaultA: 0,
@@ -880,7 +879,7 @@ $$CS = \int_0^6 \left(50 - 0,5q^2 - 32\right)dq = \int_0^6 \left(18 - 0,5q^2\rig
       bankKey: 'short-vaccine-sbt430',
       part: 'short',
       level: 'Vận dụng cao',
-      questionLatex: String.raw`*(Theo Bài 4.30 SBT)* Nếu không có vắc xin, tốc độ phát sinh ca nhiễm mới của một dịch bệnh là $f(t) = 30t - t^2$ (người/ngày); khi tiêm vắc xin, tốc độ ca nhiễm mới giảm xuống còn $g(t) = 15t - 0,5t^2$ (người/ngày), với $t$ là số ngày tính từ lúc bắt đầu dịch. Trong $20$ ngày đầu ($0 \le t \le 20$), vắc xin đã giúp giảm được bao nhiêu ca nhiễm bệnh?`,
+      questionLatex: String.raw`Nếu không có vắc xin, tốc độ phát sinh ca nhiễm mới của một dịch bệnh là $f(t) = 30t - t^2$ (người/ngày); khi tiêm vắc xin, tốc độ ca nhiễm mới giảm xuống còn $g(t) = 15t - 0,5t^2$ (người/ngày), với $t$ là số ngày tính từ lúc bắt đầu dịch. Trong $20$ ngày đầu ($0 \le t \le 20$), vắc xin đã giúp giảm được bao nhiêu ca nhiễm bệnh?`,
       shortAnswer: 1666.67,
       tolerance: 0.5,
       unitHint: 'Làm tròn đến hàng phần trăm (VD: 1666,67)',
@@ -890,7 +889,7 @@ $$\Delta N = \int_0^{20} \left[(30t - t^2) - (15t - 0,5t^2)\right]dt = \int_0^{2
 **Đáp số:** $1666,67$.`,
       geogebra: {
         mode: '2d',
-        title: 'Bài 4.30 SBT: Hiệu quả vắc xin giữa f(t) và g(t) trên [0; 20]',
+        title: 'Hiệu quả vắc xin giữa f(t) và g(t) trên [0; 20]',
         fExpr: '30*x - x^2',
         gExpr: '15*x - 0.5*x^2',
         defaultA: 0,
@@ -901,7 +900,7 @@ $$\Delta N = \int_0^{20} \left[(30t - t^2) - (15t - 0,5t^2)\right]dt = \int_0^{2
       bankKey: 'short-bacteria-sgk432',
       part: 'short',
       level: 'Vận dụng',
-      questionLatex: String.raw`*(Theo Bài 4.32 SGK & 4.40 SBT)* Một quần thể vi khuẩn ban đầu có $1000$ cá thể. Tốc độ tăng trưởng của quần thể tại thời điểm $t$ giờ được cho bởi $N'(t) = 100t + 200$ (con/giờ). Hỏi sau $4$ giờ, số lượng vi khuẩn trong quần thể là bao nhiêu con?`,
+      questionLatex: String.raw`Một quần thể vi khuẩn ban đầu có $1000$ cá thể. Tốc độ tăng trưởng của quần thể tại thời điểm $t$ giờ được cho bởi $N'(t) = 100t + 200$ (con/giờ). Hỏi sau $4$ giờ, số lượng vi khuẩn trong quần thể là bao nhiêu con?`,
       shortAnswer: 2600,
       tolerance: 0.5,
       unitHint: 'Đơn vị: con',
@@ -916,7 +915,7 @@ $$N(4) = 1000 + 1600 = 2600\text{ (con)}$$
       bankKey: 'short-blood-sgk413',
       part: 'short',
       level: 'Vận dụng',
-      questionLatex: String.raw`*(Theo Bài 4.13 SGK)* Giả sử lưu lượng máu chảy qua mặt cắt động mạch trong khoảng thời gian từ $t = 0$ đến $t = 3$ giây có tốc độ $F(t) = 3t^2 + 2t + 1 \text{ (cm}^3\text{/s)}$. Tổng thể tích máu chảy qua mặt cắt đó trong $3$ giây đầu là bao nhiêu $\text{cm}^3$?`,
+      questionLatex: String.raw`Giả sử lưu lượng máu chảy qua mặt cắt động mạch trong khoảng thời gian từ $t = 0$ đến $t = 3$ giây có tốc độ $F(t) = 3t^2 + 2t + 1 \text{ (cm}^3\text{/s)}$. Tổng thể tích máu chảy qua mặt cắt đó trong $3$ giây đầu là bao nhiêu $\text{cm}^3$?`,
       shortAnswer: 39,
       tolerance: 0.05,
       unitHint: 'Đơn vị: cm^3',
@@ -929,7 +928,7 @@ $$V = \int_0^3 (3t^2 + 2t + 1)dt = (t^3 + t^2 + t)\Big|_0^3 = 27 + 9 + 3 = 39\te
       bankKey: 'short-cone-vol-sgk419',
       part: 'short',
       level: 'Vận dụng',
-      questionLatex: String.raw`*(Theo Bài 4.19 SGK)* Quay hình tam giác vuông giới hạn bởi đường thẳng $y = \frac{1}{2}x$, trục hoành $Ox$ và đường thẳng $x = 6$ xung quanh trục $Ox$ ta được một khối nón. Biết thể tích khối nón có dạng $V = a\pi$. Giá trị của $a$ bằng bao nhiêu?`,
+      questionLatex: String.raw`Quay hình tam giác vuông giới hạn bởi đường thẳng $y = \frac{1}{2}x$, trục hoành $Ox$ và đường thẳng $x = 6$ xung quanh trục $Ox$ ta được một khối nón. Biết thể tích khối nón có dạng $V = a\pi$. Giá trị của $a$ bằng bao nhiêu?`,
       shortAnswer: 18,
       tolerance: 0.05,
       unitHint: 'Chỉ nhập hệ số a đứng trước pi',
@@ -940,7 +939,7 @@ Vậy $a = 18$.
 **Đáp số:** $18$.`,
       geogebra: {
         mode: '3d',
-        title: 'Bài 4.19 SGK: Khối nón sinh bởi y = 0,5x trên [0; 6]',
+        title: 'Khối nón sinh bởi y = 0,5x trên [0; 6]',
         fExpr: '0.5*x',
         defaultA: 0,
         defaultB: 6,
@@ -950,7 +949,7 @@ Vậy $a = 18$.
       bankKey: 'short-toy-car-sbt448',
       part: 'short',
       level: 'Vận dụng cao',
-      questionLatex: String.raw`*(Theo Bài 4.48 SBT)* Một ô tô đồ chơi chuyển động trên đường thẳng có gia tốc phụ thuộc thời gian theo công thức $a(t) = 6t - 12 \text{ (m/s}^2\text{)}$. Biết vận tốc ban đầu $v(0) = 9\text{ m/s}$. Tính độ dịch chuyển của ô tô trong $3$ giây đầu tiên (từ $t = 0$ đến $t = 3$, đơn vị: mét).`,
+      questionLatex: String.raw`Một ô tô đồ chơi chuyển động trên đường thẳng có gia tốc phụ thuộc thời gian theo công thức $a(t) = 6t - 12 \text{ (m/s}^2\text{)}$. Biết vận tốc ban đầu $v(0) = 9\text{ m/s}$. Tính độ dịch chuyển của ô tô trong $3$ giây đầu tiên (từ $t = 0$ đến $t = 3$, đơn vị: mét).`,
       shortAnswer: 0,
       tolerance: 0.05,
       unitHint: 'Đơn vị: mét',
@@ -961,7 +960,7 @@ $$\Delta s = \int_0^3 (3t^2 - 12t + 9)dt = (t^3 - 6t^2 + 9t)\Big|_0^3 = 27 - 54 
 **Đáp số:** $0$.`,
       geogebra: {
         mode: '2d',
-        title: 'Bài 4.48 SBT: Đồ thị vận tốc v(t) = 3t^2 - 12t + 9 trên [0; 3]',
+        title: 'Đồ thị vận tốc v(t) = 3t^2 - 12t + 9 trên [0; 3]',
         fExpr: '3*x^2 - 12*x + 9',
         defaultA: 0,
         defaultB: 3,
@@ -969,12 +968,11 @@ $$\Delta s = \int_0^3 (3t^2 - 12t + 9)dt = (t^3 - 6t^2 + 9t)\Big|_0^3 = 27 - 54 
     },
   ];
 
-  // Bổ sung thêm các bài tập còn lại trong EXERCISES_DATA (SGK & SBT) được chuyển hóa thành câu hỏi trắc nghiệm
   const extraMcqFromExercises: BankItem[] = [
     createMcqItem(
       'ex-sgk-410a',
       'Thông hiểu',
-      String.raw`*(Bài 4.10a SGK)* Tính tích phân $I = \int_1^2 \frac{x^3 - 2x^2 + 1}{x^2}dx$.`,
+      String.raw`Tính tích phân $I = \int_1^2 \frac{x^3 - 2x^2 + 1}{x^2}dx$.`,
       String.raw`$0$`,
       [String.raw`$1$`, String.raw`$\frac{1}{2}$`, String.raw`$-\frac{1}{2}$`],
       String.raw`Chia tử cho mẫu: $\frac{x^3 - 2x^2 + 1}{x^2} = x - 2 + \frac{1}{x^2}$, sau đó áp dụng công thức Newton – Leibniz trên $[1; 2]$.`,
@@ -984,7 +982,7 @@ $$I = \int_1^2 \left(x - 2 + \frac{1}{x^2}\right)dx = \left(\frac{x^2}{2} - 2x -
     createMcqItem(
       'ex-sgk-410b',
       'Thông hiểu',
-      String.raw`*(Bài 4.10b SGK)* Giá trị của tích phân $I = \int_0^1 (2^x + 3e^x)dx$ bằng:`,
+      String.raw`Giá trị của tích phân $I = \int_0^1 (2^x + 3e^x)dx$ bằng:`,
       String.raw`$\frac{1}{\ln 2} + 3e - 3$`,
       [
         String.raw`$\ln 2 + 3e - 3$`,
@@ -998,7 +996,7 @@ $$I = \left(\frac{2^x}{\ln 2} + 3e^x\right)\Big|_0^1 = \left(\frac{2}{\ln 2} + 3
     createMcqItem(
       'ex-sbt-422c',
       'Vận dụng',
-      String.raw`*(Bài 4.22c SBT)* Diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = x^2 - 4x + 3$, trục hoành và hai đường thẳng $x = 0, x = 3$ bằng:`,
+      String.raw`Diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = x^2 - 4x + 3$, trục hoành và hai đường thẳng $x = 0, x = 3$ bằng:`,
       String.raw`$\frac{8}{3}$`,
       [String.raw`$\frac{4}{3}$`, String.raw`$0$`, String.raw`$4$`],
       String.raw`Giải phương trình $x^2 - 4x + 3 = 0 \Leftrightarrow x = 1; x = 3$. Tách tích phân trên $[0; 1]$ (dương) và $[1; 3]$ (âm).`,
@@ -1007,7 +1005,7 @@ Diện tích hình phẳng là:
 $$S = \int_0^1 (x^2 - 4x + 3)dx - \int_1^3 (x^2 - 4x + 3)dx = \frac{4}{3} + \frac{4}{3} = \frac{8}{3}$$`,
       {
         mode: '2d',
-        title: 'Bài 4.22c SBT: Diện tích y = x^2 - 4x + 3 trên [0; 3]',
+        title: 'Diện tích y = x^2 - 4x + 3 trên [0; 3]',
         fExpr: 'x^2 - 4*x + 3',
         defaultA: 0,
         defaultB: 3,
@@ -1016,7 +1014,7 @@ $$S = \int_0^1 (x^2 - 4x + 3)dx - \int_1^3 (x^2 - 4x + 3)dx = \frac{4}{3} + \fra
     createMcqItem(
       'ex-sgk-425b',
       'Vận dụng',
-      String.raw`*(Bài 4.25b SGK)* Diện tích hình phẳng giới hạn bởi đồ thị hai hàm số $y = x^2, y = 2 - x$ và hai đường thẳng $x = 0, x = 2$ bằng:`,
+      String.raw`Diện tích hình phẳng giới hạn bởi đồ thị hai hàm số $y = x^2, y = 2 - x$ và hai đường thẳng $x = 0, x = 2$ bằng:`,
       String.raw`$3$`,
       [
         String.raw`$\frac{7}{6}$`,
@@ -1028,7 +1026,7 @@ $$S = \int_0^1 (x^2 - 4x + 3)dx - \int_1^3 (x^2 - 4x + 3)dx = \frac{4}{3} + \fra
 $$S = \int_0^1 (2 - x - x^2)dx + \int_1^2 (x^2 + x - 2)dx = \frac{7}{6} + \frac{11}{6} = 3$$`,
       {
         mode: '2d',
-        title: 'Bài 4.25b SGK: Diện tích giữa y = x^2 và y = 2 - x trên [0; 2]',
+        title: 'Diện tích giữa y = x^2 và y = 2 - x trên [0; 2]',
         fExpr: 'x^2',
         gExpr: '2 - x',
         defaultA: 0,
@@ -1038,7 +1036,7 @@ $$S = \int_0^1 (2 - x - x^2)dx + \int_1^2 (x^2 + x - 2)dx = \frac{7}{6} + \frac{
     createMcqItem(
       'ex-sbt-419-hooke',
       'Vận dụng',
-      String.raw`*(Bài 4.19 SBT)* Theo định luật Hooke, lực cần thiết để giữ một lò xo giãn thêm $x$ mét so với độ dài tự nhiên là $F(x) = kx \text{ (N)}$. Biết cần một lực $40\text{ N}$ để giữ lò xo giãn thêm $0,1\text{ m}$. Công thực hiện để kéo giãn lò xo từ vị trí tự nhiên ($x = 0$) đến vị trí giãn thêm $0,2\text{ m}$ là:`,
+      String.raw`Theo định luật Hooke, lực cần thiết để giữ một lò xo giãn thêm $x$ mét so với độ dài tự nhiên là $F(x) = kx \text{ (N)}$. Biết cần một lực $40\text{ N}$ để giữ lò xo giãn thêm $0,1\text{ m}$. Công thực hiện để kéo giãn lò xo từ vị trí tự nhiên ($x = 0$) đến vị trí giãn thêm $0,2\text{ m}$ là:`,
       String.raw`$8\text{ (J)}$`,
       [
         String.raw`$4\text{ (J)}$`,
@@ -1053,7 +1051,7 @@ $$A = \int_0^{0,2} 400x dx = 200x^2\Big|_0^{0,2} = 200\cdot 0,04 = 8\text{ (J)}$
     createMcqItem(
       'ex-sgk-434-vol',
       'Vận dụng',
-      String.raw`*(Bài 4.34 SGK)* Thể tích khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi đồ thị hàm số $y = e^x$, trục hoành $Ox$ và hai đường thẳng $x = 0, x = 1$ quanh trục $Ox$ bằng:`,
+      String.raw`Thể tích khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi đồ thị hàm số $y = e^x$, trục hoành $Ox$ và hai đường thẳng $x = 0, x = 1$ quanh trục $Ox$ bằng:`,
       String.raw`$\frac{\pi(e^2 - 1)}{2}$`,
       [
         String.raw`$\pi(e^2 - 1)$`,
@@ -1065,7 +1063,7 @@ $$A = \int_0^{0,2} 400x dx = 200x^2\Big|_0^{0,2} = 200\cdot 0,04 = 8\text{ (J)}$
 $$V = \pi\int_0^1 (e^x)^2 dx = \pi\int_0^1 e^{2x}dx = \pi\cdot\frac{e^{2x}}{2}\Big|_0^1 = \frac{\pi(e^2 - 1)}{2}$$`,
       {
         mode: '3d',
-        title: 'Bài 4.34 SGK: Khối tròn xoay y = e^x trên [0; 1]',
+        title: 'Khối tròn xoay y = e^x trên [0; 1]',
         fExpr: 'exp(x)',
         defaultA: 0,
         defaultB: 1,
@@ -1074,7 +1072,7 @@ $$V = \pi\int_0^1 (e^x)^2 dx = \pi\int_0^1 e^{2x}dx = \pi\cdot\frac{e^{2x}}{2}\B
     createMcqItem(
       'ex-sbt-426a-tri',
       'Vận dụng cao',
-      String.raw`*(Ví dụ 6 Bài 13 SGK & Bài 4.26a SBT)* Một vật thể nằm giữa hai mặt phẳng $x = 0$ và $x = 3$. Cắt vật thể bởi mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ $x \ (0 \le x \le 3)$ ta được thiết diện là một tam giác đều có cạnh bằng $2\sqrt{x}$. Thể tích của vật thể đó bằng:`,
+      String.raw`Một vật thể nằm giữa hai mặt phẳng $x = 0$ và $x = 3$. Cắt vật thể bởi mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ $x \ (0 \le x \le 3)$ ta được thiết diện là một tam giác đều có cạnh bằng $2\sqrt{x}$. Thể tích của vật thể đó bằng:`,
       String.raw`$\frac{9\sqrt{3}}{2}$`,
       [
         String.raw`$\frac{9\sqrt{3}\pi}{2}$`,
@@ -1095,7 +1093,7 @@ $$V = \int_0^3 x\sqrt{3}dx = \frac{\sqrt{3}x^2}{2}\Big|_0^3 = \frac{9\sqrt{3}}{2
   };
 }
 
-// Hàm rút ngẫu nhiên 20 câu Trắc nghiệm + 5 câu Trả lời ngắn (Ưu tiên các dạng chưa xuất hiện ở đề ngay trước đó)
+// Hàm rút ngẫu nhiên 20 câu Trắc nghiệm + 5 câu Trả lời ngắn
 function pickRandomExamFromBank(
   version: number,
   prevUsedKeys: Set<string>
@@ -1104,11 +1102,10 @@ function pickRandomExamFromBank(
 
   const pickWithPriority = (pool: BankItem[], count: number): BankItem[] => {
     const fresh = shuffleArray(pool.filter((item) => !prevUsedKeys.has(item.bankKey)));
-    constused = shuffleArray(pool.filter((item) => prevUsedKeys.has(item.bankKey)));
+    const used = shuffleArray(pool.filter((item) => prevUsedKeys.has(item.bankKey)));
     return [...fresh, ...used].slice(0, count);
   };
 
-  // Phân bổ chuẩn ma trận đề kiểm tra: 6 Nhận biết + 6 Thông hiểu + 5 Vận dụng + 3 Vận dụng cao = 20 câu MCQ
   const nbItems = pickWithPriority(
     mcqPool.filter((q) => q.level === 'Nhận biết'),
     6
@@ -1152,16 +1149,13 @@ function pickRandomExamFromBank(
 }
 
 export default function App() {
-  // Điều hướng 3 phân hệ chính
   const [activeTab, setActiveTab] = useState<'theory' | 'exercises' | 'exam'>('theory');
   const [exerciseSource, setExerciseSource] = useState<'sgk' | 'sbt'>('sgk');
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
-  // Phân hệ 1: Lý thuyết
   const [selectedTheoryId, setSelectedTheoryId] = useState<string>(THEORY_SECTIONS[0].id);
   const [showTheoryExampleSol, setShowTheoryExampleSol] = useState<Record<string, boolean>>({});
 
-  // Phân hệ 2: Giải bài tập SGK (35 bài) & SBT (48 bài)
   const filteredExercises = EXERCISES_DATA.filter((ex) => ex.source === exerciseSource);
   const [selectedExerciseId, setSelectedExerciseId] = useState<string>('sgk-4.14');
   const [unlockedHintMap, setUnlockedHintMap] = useState<Record<string, boolean>>({
@@ -1172,7 +1166,6 @@ export default function App() {
   const currentExercise: ExerciseItem =
     filteredExercises.find((e) => e.id === selectedExerciseId) || filteredExercises[0];
 
-  // Phân hệ 3: Đề kiểm tra cuối chương (25 câu bốc ngẫu nhiên từ tất cả các dạng bài SGK & SBT)
   const prevUsedKeysRef = useRef<Set<string>>(new Set());
   const [examVersion, setExamVersion] = useState<number>(1);
   const [examQuestions, setExamQuestions] = useState<ExamQuestion[]>(() => {
@@ -1184,7 +1177,6 @@ export default function App() {
   const [shortAnswers, setShortAnswers] = useState<Record<number, string>>({});
   const [isExamSubmitted, setIsExamSubmitted] = useState<boolean>(false);
 
-  // Phân hệ 4: Chatbot AI chuyên giải Đề kiểm tra cuối chương
   const [chatInput, setChatInput] = useState<string>('');
   const [unlockedChatSolMap, setUnlockedChatSolMap] = useState<Record<string, boolean>>({});
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
@@ -1192,7 +1184,7 @@ export default function App() {
       id: 'welcome',
       role: 'assistant',
       thinkingHint: String.raw`Chào em! Thầy là **Trợ lý AI chuyên giải Đề Kiểm Tra Cuối Chương IV**.
-• **Ngân hàng đề đa dạng:** Mỗi lần bấm **"Làm đề khác"**, hệ thống sẽ chọn ngẫu nhiên 25 câu hỏi từ tất cả các dạng bài tập trong **SGK (35 bài)** và **SBT (48 bài)**.
+• **Ngân hàng đề đa dạng:** Mỗi lần bấm **"Làm đề khác"**, hệ thống sẽ chọn ngẫu nhiên 25 câu hỏi từ các dạng bài tập trong **Sách giáo khoa** và **Sách bài tập**.
 • Để xem **💡 Gợi ý tư duy giải**, **📖 Lời giải chi tiết** và **📐 Hình vẽ GeoGebra (nếu có)** của bất kỳ câu nào, em chỉ cần bấm vào nút **"🤖 Hỏi đáp AI"** ngay tại câu hỏi đó!`,
     },
   ]);
@@ -1203,7 +1195,6 @@ export default function App() {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatMessages]);
 
-  // Chuyển đổi SGK / SBT
   const handleSelectExerciseSource = (src: 'sgk' | 'sbt') => {
     setExerciseSource(src);
     setActiveTab('exercises');
@@ -1214,7 +1205,6 @@ export default function App() {
     }
   };
 
-  // Kiểm tra 1 câu trong đề kiểm tra là Đúng hay Sai
   const isQuestionCorrect = (q: ExamQuestion): boolean => {
     if (q.part === 'mcq') {
       return mcqAnswers[q.id] !== undefined && mcqAnswers[q.id] === q.correctOptionIndex;
@@ -1228,7 +1218,6 @@ export default function App() {
     );
   };
 
-  // Tính tổng số câu đúng khi nộp bài
   const calculateExamResult = () => {
     let mcqCorrect = 0;
     let shortCorrect = 0;
@@ -1248,7 +1237,6 @@ export default function App() {
     };
   };
 
-  // Sinh đề kiểm tra mới với các dạng bài tập hoàn toàn mới từ SGK & SBT
   const handleGenerateNewExam = () => {
     const nextVer = examVersion + 1;
     const picked = pickRandomExamFromBank(nextVer, prevUsedKeysRef.current);
@@ -1263,14 +1251,13 @@ export default function App() {
       {
         id: `new-exam-${nextVer}`,
         role: 'assistant',
-        thinkingHint: String.raw`Hệ thống đã rút ngẫu nhiên **25 dạng bài tập mới từ SGK & SBT** để tạo **Đề kiểm tra số ${nextVer}**!
+        thinkingHint: String.raw`Hệ thống đã rút ngẫu nhiên **25 dạng bài tập mới từ Sách giáo khoa & Sách bài tập** để tạo **Đề kiểm tra số ${nextVer}**!
 Em hãy làm bài và bấm **Nộp bài**, sau đó bấm nút **"🤖 Hỏi đáp AI"** ở bất kỳ câu nào để xem gợi ý tư duy, lời giải chi tiết và hình minh họa nhé.`,
       },
     ]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Gửi câu hỏi trong Đề kiểm tra sang Chatbot AI
   const handleAskAIForExamQuestion = (q: ExamQuestion) => {
     const msgId = `bot-${Date.now()}`;
     const userMsg: ChatMessage = {
@@ -1294,7 +1281,6 @@ Em hãy làm bài và bấm **Nộp bài**, sau đó bấm nút **"🤖 Hỏi đ
     setChatMessages((prev) => [...prev, userMsg, botMsg]);
   };
 
-  // Xử lý khi học sinh nhập số câu (VD: "Câu 12" hoặc "12") vào ô chat
   const handleChatSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const raw = chatInput.trim();
@@ -1377,7 +1363,7 @@ Em hãy bấm trực tiếp vào nút **"🤖 Hỏi đáp AI"** ở từng câu 
                 }`}
               >
                 <FileText className="w-4 h-4" />
-                2. Giải Bài Tập ({exerciseSource === 'sgk' ? 'SGK - 35 bài' : 'SBT - 48 bài'})
+                2. Giải Bài Tập ({exerciseSource === 'sgk' ? 'SGK' : 'SBT'})
                 <ChevronDown className="w-4 h-4" />
               </button>
 
@@ -1386,30 +1372,24 @@ Em hãy bấm trực tiếp vào nút **"🤖 Hỏi đáp AI"** ở từng câu 
                   <button
                     type="button"
                     onClick={() => handleSelectExerciseSource('sgk')}
-                    className={`w-full text-left px-4 py-2.5 text-xs font-bold flex items-center justify-between hover:bg-indigo-50 transition ${
+                    className={`w-full text-left px-4 py-2.5 text-xs font-bold flex items-center hover:bg-indigo-50 transition ${
                       activeTab === 'exercises' && exerciseSource === 'sgk'
                         ? 'text-indigo-700 bg-indigo-50/70'
                         : 'text-slate-700'
                     }`}
                   >
                     <span>📘 Bài tập Sách giáo khoa (SGK)</span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800">
-                      Đủ 35 bài
-                    </span>
                   </button>
                   <button
                     type="button"
                     onClick={() => handleSelectExerciseSource('sbt')}
-                    className={`w-full text-left px-4 py-2.5 text-xs font-bold flex items-center justify-between hover:bg-indigo-50 transition ${
+                    className={`w-full text-left px-4 py-2.5 text-xs font-bold flex items-center hover:bg-indigo-50 transition ${
                       activeTab === 'exercises' && exerciseSource === 'sbt'
                         ? 'text-indigo-700 bg-indigo-50/70'
                         : 'text-slate-700'
                     }`}
                   >
                     <span>📙 Bài tập Sách bài tập (SBT)</span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">
-                      Đủ 48 bài
-                    </span>
                   </button>
                 </div>
               )}
@@ -1434,9 +1414,7 @@ Em hãy bấm trực tiếp vào nút **"🤖 Hỏi đáp AI"** ở từng câu 
       {/* NỘI DUNG CHÍNH */}
       <div className="max-w-7xl w-full mx-auto px-4 py-6 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         <main className="lg:col-span-8 space-y-6">
-          {/* =================================================================
-              PHÂN HỆ 1: TÓM TẮT LÝ THUYẾT
-             ================================================================= */}
+          {/* PHÂN HỆ 1: TÓM TẮT LÝ THUYẾT */}
           {activeTab === 'theory' && (
             <div className="space-y-5">
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-wrap gap-2">
@@ -1512,9 +1490,7 @@ Em hãy bấm trực tiếp vào nút **"🤖 Hỏi đáp AI"** ở từng câu 
             </div>
           )}
 
-          {/* =================================================================
-              PHÂN HỆ 2: GIẢI BÀI TẬP SGK (35 BÀI) & SBT (48 BÀI)
-             ================================================================= */}
+          {/* PHÂN HỆ 2: GIẢI BÀI TẬP SÁCH GIÁO KHOA & SÁCH BÀI TẬP */}
           {activeTab === 'exercises' && (
             <div className="space-y-5">
               <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
@@ -1525,8 +1501,8 @@ Em hãy bấm trực tiếp vào nút **"🤖 Hỏi đáp AI"** ở từng câu 
                     </span>
                     <h2 className="text-xl font-extrabold text-slate-900">
                       {exerciseSource === 'sgk'
-                        ? '📘 Bài Tập Sách Giáo Khoa (Đủ 35 bài: 4.1 → 4.35)'
-                        : '📙 Bài Tập Sách Bài Tập (Đủ 48 bài: 4.1 → 4.48)'}
+                        ? '📘 Bài tập Sách giáo khoa (SGK)'
+                        : '📙 Bài tập Sách bài tập (SBT)'}
                     </h2>
                   </div>
 
@@ -1540,7 +1516,7 @@ Em hãy bấm trực tiếp vào nút **"🤖 Hỏi đáp AI"** ở từng câu 
                           : 'bg-slate-50 text-slate-700 border-slate-200'
                       }`}
                     >
-                      Bài tập SGK (35)
+                      Bài tập Sách giáo khoa
                     </button>
                     <button
                       type="button"
@@ -1551,7 +1527,7 @@ Em hãy bấm trực tiếp vào nút **"🤖 Hỏi đáp AI"** ở từng câu 
                           : 'bg-slate-50 text-slate-700 border-slate-200'
                       }`}
                     >
-                      Bài tập SBT (48)
+                      Bài tập Sách bài tập
                     </button>
                   </div>
                 </div>
@@ -1671,15 +1647,13 @@ Em hãy bấm trực tiếp vào nút **"🤖 Hỏi đáp AI"** ở từng câu 
             </div>
           )}
 
-          {/* =================================================================
-              PHÂN HỆ 3: ĐỀ KIỂM TRA CUỐI CHƯƠNG (25 CÂU ĐA DẠNG TỪ SGK & SBT)
-             ================================================================= */}
+          {/* PHÂN HỆ 3: ĐỀ KIỂM TRA CUỐI CHƯƠNG (25 CÂU ĐA DẠNG TỪ SGK & SBT) */}
           {activeTab === 'exam' && (
             <div className="space-y-6">
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-4">
                 <div>
                   <span className="px-2.5 py-1 rounded-md bg-indigo-100 text-indigo-800 text-xs font-extrabold uppercase">
-                    Đề kiểm tra số {examVersion} • Tuyển chọn ngẫu nhiên từ 35 bài SGK & 48 bài SBT
+                    Đề kiểm tra số {examVersion} • Tuyển chọn ngẫu nhiên từ Sách giáo khoa & Sách bài tập
                   </span>
                   <h2 className="text-xl font-extrabold text-slate-900 mt-1">
                     Đề Kiểm Tra & Ôn Tập Cuối Chương IV (20 Trắc Nghiệm + 5 Trả Lời Ngắn)
@@ -1925,9 +1899,7 @@ Em hãy bấm trực tiếp vào nút **"🤖 Hỏi đáp AI"** ở từng câu 
           )}
         </main>
 
-        {/* =================================================================
-            PHÂN HỆ 4: CHATBOT AI CHUYÊN GIẢI ĐỀ KIỂM TRA CUỐI CHƯƠNG
-           ================================================================= */}
+        {/* PHÂN HỆ 4: CHATBOT AI CHUYÊN GIẢI ĐỀ KIỂM TRA CUỐI CHƯƠNG */}
         <aside className="lg:col-span-4 lg:sticky lg:top-20">
           <div className="bg-white rounded-2xl shadow-lg border border-indigo-200 overflow-hidden flex flex-col h-[700px]">
             <div className="bg-gradient-to-r from-indigo-800 to-violet-800 text-white p-4 flex items-center justify-between">
